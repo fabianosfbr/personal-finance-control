@@ -15,6 +15,7 @@
 
         <!-- Styles -->
         @livewireStyles
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -40,5 +41,27 @@
         @stack('modals')
 
         @livewireScripts
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                showCloseButton: true,
+                timer: 3000,
+                timerProgressBar:true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        
+            window.addEventListener('alert',({detail:{type,position,message}})=>{
+                Toast.fire({
+                    icon:type,
+                    position:position,
+                    title:message
+                })
+            })
+        </script>
     </body>
 </html>

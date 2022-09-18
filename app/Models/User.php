@@ -60,11 +60,11 @@ class User extends Authenticatable
     ];
 
     public function expense(){
-        return $this->hasMany(Expense:class);
+        return $this->hasMany(Expense::class);
     }
 
     public function plan(){
-        return $this->HasOne(UserPlan:class);
+        return $this->HasOne(UserPlan::class);
     }
 
 
