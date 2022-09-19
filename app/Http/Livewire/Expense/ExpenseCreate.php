@@ -30,7 +30,7 @@ class ExpenseCreate extends Component
         $this->validate();
         
         try{
-            $expense = Expense::create([
+            $expense = Auth::user()->expenses()->create([
                 'type' => $this->type,
                 'amount' => $this->amount,
                 'description' => $this->description,
@@ -51,10 +51,10 @@ class ExpenseCreate extends Component
         }catch(Exception $e){
             // Set Flash Message
            $this->dispatchBrowserEvent('alert',[
-            'type'=>'error',
-            'position'=>'top-end',
-            'message'=>"Sorry, try again"
-        ]);
+                'type'=>'error',
+                'position'=>'top-end',
+                'message'=>"Sorry, try again"
+            ]);
         }
     }
 
