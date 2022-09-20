@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Controle de Gastos Pessoais
 
 
